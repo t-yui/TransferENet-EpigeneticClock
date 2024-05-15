@@ -1,0 +1,13 @@
+# ignore all
+*
+
+# allow directory
+!*/
+
+# allow a specified file
+!*.py
+
+!.gitignore
+!.gitkeep
+!LICENSE
+!README.md
