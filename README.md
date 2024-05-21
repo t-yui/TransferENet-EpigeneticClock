@@ -1,6 +1,8 @@
 # TransferENet-EpigeneticClock
 
-This repository is dedicated to the data availability for the paper **Transfer Elastic Net for Developing Epigenetic Clocks for the Japanese Population**.
+This repository is dedicated to the data availability for the paper [**Transfer Elastic Net for Developing Epigenetic Clocks for the Japanese Population**](https://doi.org/10.1101/2024.05.19.594899).
+
+The preprint manuscript is here: doi: https://doi.org/10.1101/2024.05.19.594899
 
 ## Description
 
