@@ -2,8 +2,6 @@
 
 This repository is dedicated to the data availability for the paper [**Transfer Elastic Net for Developing Epigenetic Clocks for the Japanese Population**](https://doi.org/10.1101/2024.05.19.594899).
 
-The preprint manuscript is here: doi: https://doi.org/10.1101/2024.05.19.594899
-
 ## Description
 
 - This repository contains a Python script for implementing **Transfer Elastic Net** proposed in the paper, which can be found in the directory `transfer_elastic_net`.
