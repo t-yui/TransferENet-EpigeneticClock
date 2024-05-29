@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# This script is for generating test datasets.
+#
+# Licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License.
+# See the LICENSE file in the root of this repository for more details.
+#
+# Authors: Yui tomo, Ryo nakaki
+# Date: 2024/05/29
+
 import numpy as np
 import pandas as pd
 
