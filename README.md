@@ -4,7 +4,7 @@ This repository is dedicated to the data availability for the paper [**Transfer 
 
 ## Description
 
-- This repository contains a Python script for implementing **Transfer Elastic Net** proposed in the paper, which can be found in the directory `transfer_elastic_net`.
+- This repository contains a Python script for implementing **Transfer Elastic Net** and its documentation, which can be found in the directory [transfer_elastic_net](transfer_elastic_net).
 - Once the paper is accepted, we will add a file containing the regression coefficients of the estimated epigenetic clocks to this repository.
 
 ## License
