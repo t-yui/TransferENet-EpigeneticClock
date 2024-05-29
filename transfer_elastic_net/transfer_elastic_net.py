@@ -117,68 +117,68 @@ def estimateTransferElasticNet(
 
 
 if __name__ == "__main__":
-    np.random.seed(100)
+    import pandas as pd
 
-    # initial estimation using elastic net
-    beta = np.array([0, 1, -1, 0.5, -0.5, 0, 0])
-    p = len(beta)
-    n_source = 500
-    X = np.random.randn(n_source, p)
-    X = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
-    y = beta @ X.T
+    # load data
+    df_source = pd.read_csv('./test_source_domain.csv')
+    X_source = df_source.drop('y', axis=1).values
+    y_source = df_source['y'].values
+
+    df_target = pd.read_csv('./test_target_domain.csv')
+    X_target = df_target.drop('y', axis=1).values
+    y_target = df_target['y'].values
+
+    # initial estimation in the source domain using Elastic Net
     lambda_ = 0.5
     rho = 0.5
     alpha = 1
+    beta = np.zeros(X_source.shape[1])
     beta_tilde = estimateTransferElasticNet(
-        X, y, lambda_, alpha, rho, beta, max_iter=1000, tol=1e-4
+        X_source, y_source, lambda_, alpha, rho, beta, max_iter=1000, tol=1e-4
     )
-    print(beta_tilde)
+    print("Initial estimate in the source domain:", beta_tilde)
 
-    # generate data
-    n_target = 10
-    X = np.random.randn(n_target, p)
-    X = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
-    y = beta @ X.T
-
-    # tuning parameter
-    lambda_ = 0.8
+    # estimation in the target domain
+    
+    # intensity of reguralization: lambda
+    lambda_ = 1
 
     # Elastic Net
-    rho = 0.5
     alpha = 1
+    rho = 0.5
     res = estimateTransferElasticNet(
-        X, y, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
+        X_target, y_target, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
     )
-    print(res)
+    print("Elastic Net estimate in the target domain:", res)
 
     # Transfer Elastic Net
-    rho = 0.5
     alpha = 0.5
-    res = estimateTransferElasticNet(
-        X, y, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
-    )
-    print(res)
-
-    # only transfer regularization term
     rho = 0.5
-    alpha = 0
     res = estimateTransferElasticNet(
-        X, y, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
+        X_target, y_target, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
     )
-    print(res)
+    print("Transfer Elastic Net estimate in the target domain:", res)
+
+    # Only transfer regularization term
+    alpha = 0
+    rho = 0.5
+    res = estimateTransferElasticNet(
+        X_target, y_target, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
+    )
+    print("Only transfer regularization term estimate in the target domain:", res)
 
     # Lasso
-    rho = 1
     alpha = 1
+    rho = 1
     res = estimateTransferElasticNet(
-        X, y, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
+        X_target, y_target, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
     )
-    print(res)
+    print("Lasso estimate in the target domain:", res)
 
     # Transfer Lasso
-    rho = 1
     alpha = 0.5
+    rho = 1
     res = estimateTransferElasticNet(
-        X, y, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
+        X_target, y_target, lambda_, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
     )
-    print(res)
+    print("Transfer Lasso estimate in the target domain:", res)
