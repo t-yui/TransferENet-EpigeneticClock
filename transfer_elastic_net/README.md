@@ -1,7 +1,18 @@
 # transfer_elastic_net
 
 This directory contains the implementation of the [**Transfer Elastic Net**](https://doi.org/10.1101/2024.05.19.594899), a parameter transfer learning approach using $\ell_1$ and $\ell_2$ regularization terms.
-The `transfer_elastic_net.py` script includes `estimateTransferElasticNet` function for performing Transfer Elastic Net via coordinate descent algorithm and the main block for examples of implementation using test dataset.
+The `transfer_elastic_net.py` script includes `estimateTransferElasticNet` function for performing Transfer Elastic Net via coordinate descent algorithm and the main block for examples of implementation using test datasets.
+
+
+# Requirements
+
+The scripts depend on the following Python libraries:
+
+- **numpy**
+- **pandas**
+
+The scripts use only basic functionalities of these libraries such as matrix computations, generation of random number, and data loading and saving, which are well-supported in higher versions of Python 3.
+While the scripts are compatible with recent versions of Python 3, if you encounter any problems while running them, check and update the versions of Python 3 and the dependent libraries.
 
 
 # Description of `estimateTransferElasticNet` Function
@@ -24,7 +35,7 @@ The `transfer_elastic_net.py` script includes `estimateTransferElasticNet` funct
 - **beta (numpy array, shape = (n_features,)):** The estimates of regression coefficients parameter.
 
 
-# Example of Implementation Using Test Dataset
+# Example of Implementation Using Test Datasets
 
 ## Data Generation
 
@@ -47,20 +58,20 @@ python create_test_data.py
 The source domain data is generated according to a linear regression model:
 - **Number of features:** `p = 7`
 - **Number of observations:** `n = 500`
-- **True Value of Coefficients:** `beta = [0, 1, -1, 0.5, -0.5, 0, 0]`
+- **Values of coefficients:** `beta = [0, 1, -1, 0.5, -0.5, 0, 0]`
 
 The explanatory variable matrix $X$ is drawn from a independent standard normal distribution and then standardized.
 The response variable $y$ is computed through the linear model:
 
-$y = X \beta^{\top} + \epsilon$,
+$y = X \beta^{\top} + \varepsilon$,
 
-where $\epsilon$ is the noise term $\epsilon \sim \mathrm{N}(0, 1^{2})$.
+where $\epsilon$ is the noise term $\varepsilon \sim \mathrm{N}(0, 1)$.
 
 #### Target Domain
 The target domain data shares the feature and the generation model with the source domain but the sample size is much smaller:
 - **Number of features:** `p = 7`
 - **Number of observations:** `n = 10`
-- **True Value of Coefficients:** `beta = [0, 1, -1, 0.5, -0.5, 0, 0]`
+- **Values of coefficients:** `beta = [0, 1, -1, 0.5, -0.5, 0, 0]`
 
 ## Implementation
 
@@ -131,12 +142,12 @@ Transfer Lasso estimate in the target domain: [-0.32772041  0.29049459 -0.522989
 ```
 
 
-## License
+# License
 
 This repository is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International Public License](LICENSE).
 
 
-## Credits
+# Credits
 
 - **Yui Tomo**
 - **Ryo Nakaki**
