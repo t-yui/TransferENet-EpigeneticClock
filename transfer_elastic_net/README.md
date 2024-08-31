@@ -1,6 +1,6 @@
 # transfer_elastic_net
 
-This directory contains the implementation of the [**Transfer Elastic Net**](https://doi.org/10.1101/2024.05.19.594899), a parameter transfer learning approach using $\ell_1$ and $\ell_2$ regularization terms.
+This directory contains the implementation of the [**Transfer Elastic Net**](https://doi.org/10.3390/math12172716), a parameter transfer learning approach using $\ell_1$ and $\ell_2$ regularization terms.
 The `transfer_elastic_net.py` script includes `estimateTransferElasticNet` function for performing Transfer Elastic Net via coordinate descent algorithm and the main block for examples of implementation using test datasets.
 
 
