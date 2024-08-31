@@ -13,6 +13,6 @@ This repository is licensed under the [Creative Commons Attribution-NonCommercia
 
 ## Credits
 
-Tomo, Y., & Nakaki, R. (2024). Transfer Elastic Net for developing epigenetic clocks for the Japanese population. *Mathematics*, 12(17), 2716
+Tomo, Y., & Nakaki, R. (2024). Transfer Elastic Net for developing epigenetic clocks for the Japanese population. *Mathematics*, 12(17), 2716.
 
 © Yui Tomo, Ryo Nakaki (2024).
