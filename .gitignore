@@ -11,3 +11,7 @@
 !.gitkeep
 !LICENSE
 !README.md
+
+!coefs_pc_horvath.csv
+!coefs_pc_hannum.csv
+!coefs_pc_phenoage.csv
