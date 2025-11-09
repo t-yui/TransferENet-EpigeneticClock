@@ -165,7 +165,7 @@ for structure, param in CORR_SETTINGS:
 df_err = pd.DataFrame(rows)
 summary = df_err.groupby(["structure", "method"], as_index=False).agg(
     median_l2_error=("l2_error", "median"),
-    q1_l2_error=("l2_error", lambda s: s.quantile(0.25)),
+    q3_l2_error=("l2_error", lambda s: s.quantile(0.75)),
     max_l2_error=("l2_error", "max"),
 )
 print(summary)
