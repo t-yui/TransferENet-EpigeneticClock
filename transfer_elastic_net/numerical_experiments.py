@@ -236,7 +236,13 @@ fig = plt.figure(figsize=(10, 4))
 ax = fig.add_subplot(111)
 for m in ["ENet", "TLasso", "TENet"]:
     sub = df_group[df_group["method"] == m]
-    ax.plot(sub["r"].values, sub["mean_abs_diff"].values, marker="o", label=m, lw=2)
+    if m == "TLasso":
+        marker = "o"
+    elif m == "TENet":
+        marker = "D"
+    elif m == "ENet":
+        marker = "^"
+    ax.plot(sub["r"].values, sub["mean_abs_diff"].values, marker=marker, label=m, lw=2)
     ax.fill_between(
         sub["r"].values,
         sub["mean_abs_diff"].values - sub["std_diff"].values,
@@ -250,7 +256,7 @@ ax.axhline(
     color="gray",
     label=r"$(1-\alpha) |{\beta}^{*}_j - {\beta}^{*}_k|$",
 )
-ax.set_xlabel("Correlation between the covariate pair")
+ax.set_xlabel(r"$r_{j k}$")
 ax.set_ylabel(r"$|\hat{\beta}_j - \hat{\beta}_k|$")
 ax.legend(bbox_to_anchor=(1.05, 1), loc="upper left", borderaxespad=0)
 plt.tight_layout()
