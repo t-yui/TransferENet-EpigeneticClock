@@ -251,7 +251,7 @@ ax.axhline(
     label=r"$(1-\alpha) |{\beta}^{*}_j - {\beta}^{*}_k|$",
 )
 ax.set_xlabel("Correlation between the covariate pair")
-ax.set_ylabel(r"Mean $|\hat{\beta}_j - \hat{\beta}_k|$")
+ax.set_ylabel(r"$|\hat{\beta}_j - \hat{\beta}_k|$")
 ax.legend(bbox_to_anchor=(1.05, 1), loc="upper left", borderaxespad=0)
 plt.tight_layout()
 if SAVE_PDF:
