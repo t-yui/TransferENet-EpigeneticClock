@@ -132,7 +132,7 @@ for structure, param in CORR_SETTINGS:
         for mname, pars in METHODS.items():
             alpha, rho = pars["alpha"], pars["rho"]
             beta_hat = estimateTransferElasticNet(
-                X, y, lam, alpha, rho, beta_tilde, max_iter=1000, tol=1e-4
+                X, y, lam, alpha, rho, beta_tilde, skip_intercept=False, max_iter=1000, tol=1e-4
             )
             err = l2_error(beta_hat, beta_star)
             rows.append(
@@ -183,7 +183,7 @@ def make_cov_with_one_correlated_pair(p, j, k, r):
 
 rng = np.random.default_rng(SEED_NUM + 10000)
 beta_star = make_beta_star(P, S)
-j_idx, k_idx = 1, 2
+j_idx, k_idx = 0, 1
 
 lam = set_lambda(N, P, SIGMA_NOISE)
 
@@ -200,17 +200,17 @@ for r in GROUP_R_VALUES:
 
         # TENet
         alpha_T, rho_T = METHODS["TENet"]["alpha"], METHODS["TENet"]["rho"]
-        bh_T = estimateTransferElasticNet(X, y, lam, alpha_T, rho_T, beta_tilde)
+        bh_T = estimateTransferElasticNet(X, y, lam, alpha_T, rho_T, beta_tilde, skip_intercept=False)
         diffs_TENet.append(abs(bh_T[j_idx] - bh_T[k_idx]))
 
         # ENet
         alpha_E, rho_E = METHODS["ENet"]["alpha"], METHODS["ENet"]["rho"]
-        bh_E = estimateTransferElasticNet(X, y, lam, alpha_E, rho_E, beta_tilde)
+        bh_E = estimateTransferElasticNet(X, y, lam, alpha_E, rho_E, beta_tilde, skip_intercept=False)
         diffs_ENet.append(abs(bh_E[j_idx] - bh_E[k_idx]))
 
         # TLasso
         alpha_L, rho_L = METHODS["TLasso"]["alpha"], METHODS["TLasso"]["rho"]
-        bh_L = estimateTransferElasticNet(X, y, lam, alpha_L, rho_L, beta_tilde)
+        bh_L = estimateTransferElasticNet(X, y, lam, alpha_L, rho_L, beta_tilde, skip_intercept=False)
         diffs_TLasso.append(abs(bh_L[j_idx] - bh_L[k_idx]))
 
     mean_T = float(np.mean(diffs_TENet))
