@@ -142,6 +142,16 @@ Transfer Lasso estimate in the target domain: [-0.32772041  0.29049459 -0.522989
 ```
 
 
+# Numerical Experiments for Estimation Error and Grouping Effect
+
+`numerical_experiments.py` is the script for the numerical experiments conducted in the [**theory paper**](https://doi.org/10.1080/03610926.2026.2626155).
+The execution command of this script is:
+
+```bash
+python numerical_experiments.py
+```
+
+
 # License
 
 This repository is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International Public License](LICENSE).
